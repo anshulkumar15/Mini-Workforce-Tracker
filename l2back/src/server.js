@@ -22,10 +22,10 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use("/api", authRoutes);
-app.use("/api", employeeRoutes);
-app.use("/api", attendanceRoutes);
-app.use("/api", workLogRoutes);
+app.use("/", authRoutes);
+app.use("/", employeeRoutes);
+app.use("/", attendanceRoutes);
+app.use("/", workLogRoutes);
 
 app.get('/',(req,res)=>{
     res.send('Hello World!');
