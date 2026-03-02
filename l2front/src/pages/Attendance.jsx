@@ -4,6 +4,10 @@ import { AuthContext } from "../context/AuthContext";
   import Navbar from "../components/Navbar";
 const Attendance = () => {
   const { user } = useContext(AuthContext);
+    const Base_url = import.meta.env.VITE_API_URL;
+  
+  
+
 
   const [attendance, setAttendance] = useState([]);
   const [page, setPage] = useState(1);
@@ -17,7 +21,7 @@ const Attendance = () => {
   const fetchAttendance = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/api/getattendance",
+        `${Base_url}/api/getattendance`,
         {
           params: { page, limit, search },
           headers: {
@@ -37,7 +41,7 @@ const Attendance = () => {
   const handleMarkAttendance = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/attendance",
+        `${Base_url}/api/attendance`,
         {},
         {
           headers: {

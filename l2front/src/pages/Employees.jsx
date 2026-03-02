@@ -5,6 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const Employees = () => {
   const { user } = useContext(AuthContext);
+      const Base_url = import.meta.env.VITE_API_URL;
 
   const [employees, setEmployees] = useState([]);
   const [search, setSearch] = useState("");
@@ -19,7 +20,7 @@ const Employees = () => {
   const limit = 5;
 
   const fetchEmployees = async () => {
-    const res = await axios.get("http://localhost:3000/api/employees", {
+    const res = await axios.get(`${Base_url}/api/employees`, {
       params: { page, limit, search, department },
       headers: { Authorization: `Bearer ${user.token}` }
     });
@@ -36,7 +37,7 @@ const Employees = () => {
     e.preventDefault();
 
     await axios.post(
-      "http://localhost:3000/api/addEmployee",
+      `${Base_url}/api/addEmployee`,
       { name, email, department: dept },
       { headers: { Authorization: `Bearer ${user.token}` } }
     );
@@ -53,7 +54,7 @@ const Employees = () => {
     formData.append("file", file);
 
     const res = await axios.post(
-      "http://localhost:3000/api/employees/upload",
+      `${Base_url}/api/employees/upload`,
       formData,
       { headers: { Authorization: `Bearer ${user.token}` } }
     );

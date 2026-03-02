@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
   const { user, logout } = useContext(AuthContext);
+  
 
   return (
     

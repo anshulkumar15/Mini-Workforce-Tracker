@@ -2,11 +2,13 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const Base_url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const stored = localStorage.getItem("user");
@@ -23,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 const login = async (email, password) => {
   try {
     const res = await axios.post(
-      "http://localhost:3000/api/login",
+      `${Base_url}/api/login`,
       { email, password }
     );
 

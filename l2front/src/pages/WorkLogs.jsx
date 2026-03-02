@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 
 const WorkLogs = () => {
   const { user } = useContext(AuthContext);
+      const Base_url = import.meta.env.VITE_API_URL;
 
   const [logs, setLogs] = useState([]);
   const [title, setTitle] = useState("");
@@ -18,7 +19,7 @@ const WorkLogs = () => {
 
   const fetchLogs = async () => {
     const res = await axios.get(
-      "http://localhost:3000/api/worklogs",
+      `${Base_url}/api/worklogs`,
       {
         params: { page, limit, search },
         headers: {
@@ -35,7 +36,7 @@ const WorkLogs = () => {
     e.preventDefault();
 
     await axios.post(
-      "http://localhost:3000/api/addworklogs",
+      `${Base_url}/api/addworklogs`,
       { title, description, hours },
       {
         headers: {
