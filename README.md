@@ -1,4 +1,7 @@
 # Mini-Workforce-Tracker
+
+**Live Demo:** https://baalcut.shop/
+
 A Role-Based Attendance Management System built with:
 
 - Frontend: React (Vite)
